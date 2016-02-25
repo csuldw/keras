@@ -292,7 +292,7 @@ class SimpleRNN(Recurrent):
             ones = K.ones_like(K.reshape(x[:, 0, :], (-1, self.input_dim)))
             B_W = K.dropout(ones, self.dropout_W)
         else:
-            B_W = 1.
+            B_W = None
         input_shape = self.input_shape
         input_dim = input_shape[2]
         if input_shape[1]:
