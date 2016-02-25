@@ -16,6 +16,8 @@ def time_distributed_dense(x, w, b=None, dropout=None,
         # won't work with TensorFlow
         timesteps = K.shape(x)[1]
     x = K.reshape(x, (-1, input_dim))
+    if dropout:
+        x *= K.concatenate([dropout] * timesteps, 0)
     x = K.dot(x, w)
     if b:
         x = x + b
